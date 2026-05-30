@@ -24,9 +24,13 @@ def watch_directory(path, callback=None):
         print("Stopped watching")
 
 def main():
-    parser = argparse.ArgumentParser(description='File Watcher Pro - Real-time file monitoring')
-    parser.add_argument('path', nargs='?', default='.', help='Directory to watch')
-    args = parser.parse_args()
-    watch_directory(args.path)
+    try:
+        parser = argparse.ArgumentParser(description='File Watcher Pro - Real-time file monitoring')
+        parser.add_argument('path', nargs='?', default='.', help='Directory to watch')
+        args = parser.parse_args()
+        watch_directory(args.path)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
 if __name__ == '__main__':
     main()
